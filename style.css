@@ -1,0 +1,701 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --header-height: 70px;
+    --primary-gold: #E0AE4A;
+    --primary-black: #000;
+    --primary-white: #fff;
+    --text-muted: #6c757d;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+body {
+    padding-top: var(--header-height);
+    font-family: 'IBM Plex Sans', sans-serif;
+    background-color: #F5F7FA;
+    background-image: url('./images/background.png');
+    background-position: bottom right; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+    background-size: 300px auto; 
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) { 
+    body {
+        background-size: 250px auto; 
+    }
+}
+
+@media (max-width: 768px) { 
+    body {
+        background-size: 200px auto; 
+    }
+}
+
+@media (max-width: 576px) { 
+    body {
+        background-size: 150px auto; 
+    }
+}
+
+/* Header */
+header {
+    height: var(--header-height);
+    z-index: 1040;
+    background-color: #000;
+}
+
+.logo-img {
+    width: 40px;
+    height: 40px;
+}
+
+.moon-icon {
+    width: 24px; 
+    height: 24px; 
+}
+
+.hamburger-icon {
+    width: 24px; 
+    height: 24px; 
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1050;
+    background: #fff;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar.show {
+    transform: translateX(0);
+}
+
+.sidebar-header {
+    height: var(--header-height);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+}
+
+.sidebar-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem 0;
+}
+
+.nav-link {
+    padding: 0.75rem 1.5rem;
+    color: #000;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background-color: #F5F7FA;
+    border-left: 4px solid var(--primary-gold);
+    padding-left: calc(1.5rem - 4px);
+}
+
+.nav-link:hover .sidebar-icon,
+.nav-link.active .sidebar-icon {
+    filter: brightness(0.8); 
+}
+
+.sidebar-icon {
+    width: 10px; 
+    height: 10px; 
+    margin-left: 10px; 
+    transition: var(--transition);
+}
+
+/* Sidebar Backdrop */
+.sidebar-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 1045;
+    display: none;
+}
+
+.sidebar-backdrop.show {
+    display: block;
+}
+
+/* Content Wrapper */
+.content-wrapper {
+    margin-left: 0;
+    min-height: calc(100vh - var(--header-height));
+    transition: margin-left 0.3s ease;
+    padding: 1rem;
+}
+
+/* When sidebar is open */
+body.sidebar-open {
+    overflow: hidden;
+}
+
+/* Footer */
+footer {
+    height: 35px;
+    margin-left: 0;
+    transition: margin-left 0.3s ease;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Large screens */
+@media (min-width: 992px) {
+    .sidebar {
+        top: var(--header-height);
+        transform: none;
+    }
+
+    .sidebar-header {
+        display: none !important;
+    }
+
+    .content-wrapper,
+    footer {
+        margin-left: 280px;
+    }
+
+    .sidebar-backdrop {
+        display: none !important;
+    }
+}
+
+/* dashboard section */
+
+/* Default margin for small and medium screens */
+.icon-section {
+    margin-top: 20px;
+}
+
+/* Increased margin-top only for large screens */
+@media (min-width: 992px) {
+    .icon-section {
+        margin-top: 100px; 
+    }
+}
+
+/* White Box Styling */
+.icon-box {
+    background: white;
+    padding: 0.2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+/* Image Container (Ensuring White BG) */
+.img-container {
+    background: white;
+    padding: 3px 6px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+}
+
+/* Image Styling */
+.icon-box img {
+    width: 30px; 
+    height: 50px;
+    object-fit: contain;
+}
+
+/* Text Completely Below the White Box */
+.icon-text {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* Third Image - Move Down on Large Screens */
+@media (min-width: 992px) {
+    .third-icon {
+        transform: translateY(-50%);
+    }
+}
+
+/* Fix for MD Screens - Reduce Size & Keep Icons on the Same Line */
+@media (min-width: 768px) and (max-width: 991px) {
+    .icon-box img {
+        width: 20px; /* Reduce image size */
+        height: 40px;
+    }
+
+    .icon-box {
+        padding: 0.3rem;
+    }
+
+    .icon-section {
+        flex-wrap: nowrap; 
+        justify-content: space-between; 
+    }
+}
+
+
+/* Exchange Logos Styling */
+.exchange-logos {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+    width: 100%;
+    position: relative;
+}
+
+/* Default Logo Styling */
+.exchange-logo {
+    height: 25px;
+    width: auto; 
+    transition: transform 0.3s ease;
+}
+
+/* Logo Hover Effect */
+.exchange-logo:hover {
+    transform: translateY(-3px);
+}
+
+/* Text Styling */
+.balance-text h5 {
+    font-weight: 400;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.balance-text p {
+    font-size: 0.8rem;
+    margin-bottom: 0;
+    color: var(--primary-gold);
+}
+
+/* Responsive Fixes */
+@media (max-width: 991px) {
+    .exchange-logos {
+        gap: 0.25rem; 
+    }
+
+    .exchange-logo {
+        height: 25px; 
+        width: 60%;
+        max-width: 100px; 
+    }
+
+    /* Adjust Positions */
+    .exchange-logos img:nth-child(1) { /* Binance */
+        top: 5%;
+        left: 5%;
+    }
+
+    .exchange-logos img:nth-child(2) { /* Bybit */
+        top: 30%;
+        right: 20%;
+    }
+
+    .exchange-logos img:nth-child(3) { /* Kucoin */
+        top: 55%;
+        left: 20%;
+    }
+
+    .exchange-logos img:nth-child(4) { /* MEXC Global */
+        top: 80%;
+        left: 25%;
+    }
+}
+
+/* XS Devices (Extra Small Screens) */
+@media (max-width: 575px) {
+    .exchange-logo {
+        height: 20px; 
+        max-width: 80px; 
+    }
+}
+
+/* Add TranslateY for LG Devices Only */
+@media (min-width: 992px) {
+    .second-section {
+        transform: translateY(-25%); 
+        z-index: 100; 
+    }
+
+    /* Restore original size for large screens */
+    .exchange-logo {
+        height: 25px;
+        width: auto;
+    }
+}
+
+/* Prevent Text Wrapping & Reduce Font Size */
+ .plan-text, .expired-text {
+    white-space: nowrap;
+    font-size: 14px;
+}
+/* Bot Section Styling */
+.bot-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* all list items align in a straight vertical line */
+.bot-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Bot Item Styling */
+.bot-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-left: 26px; 
+    margin-bottom: 10px; 
+}
+
+/* First Item with Icon */
+.bot-item:first-child {
+    padding-left: 0; 
+}
+
+/* Bot Icon */
+.bot-icon {
+    width: 20px;
+    height: auto;
+}
+
+/* Bot Text */
+.bot-text {
+    font-weight: 500;
+    font-size: 1rem;
+    white-space: nowrap; 
+}
+
+/* Pie Chart Styling */
+.pie-chart-img {
+    max-width: 60%;
+    height: auto;
+}
+
+.pie-chart-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 991px) { /* MD */
+    .bot-text {
+        font-size: 0.9rem;
+    }
+
+    .bot-icon {
+        width: 14px;
+        height: auto;
+    }
+
+    .pie-chart-img {
+        max-width: 55%;
+    }
+
+    .pie-chart-title {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 767px) { /* SM & XS */
+    .bot-section {
+        flex-wrap: nowrap; 
+    }
+
+    .bot-list {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .bot-text {
+        font-size: 0.85rem;
+    }
+
+    .bot-icon {
+        width: 15px;
+        height: auto;
+    }
+
+    .pie-chart-img {
+        max-width: 50%;
+    }
+
+    .pie-chart-title {
+        font-size: 0.9rem; 
+        margin-top: 5px;
+    }
+
+    .bot-item {
+        margin-bottom: 6px; 
+    }
+}
+@media (max-width: 768px) {
+    .profit-section {
+        margin-top: 30px;
+    }
+}
+
+.subscription-title {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.arrow-img {
+    width: 20px;
+    height: auto;
+    margin-top: 5px;
+    transition: transform 0.3s ease;
+}
+
+/* Expires Text Proper Alignment */
+.expired-text {
+    font-size: 14px;
+    text-align: start !important;
+    align-self: flex-start !important;
+    margin-top: 5px;
+}
+
+/* Parent Wrapper */
+.markets-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.market {
+    translateX: 50%;
+}
+
+/* Market & Info Box Styling */
+.market-box,
+.info-box {
+    background-color: var(--primary-white);
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* Equal Height */
+.market-box,
+.info-box {
+    height: 300px;
+}
+
+/* Market Section */
+.market-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--primary-black);
+    text-align: left;
+    width: 100%;
+    padding-left: 0.25rem;
+}
+
+.market-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.market-table th,
+.market-table td {
+    padding: 0.5rem;
+    text-align: left;
+    border: none;
+}
+
+.market-table th {
+    font-weight: 400;
+    color: var(--primary-gold);
+    font-size: 0.875rem;
+}
+
+.market-table td {
+    font-weight: 500;
+    color: var(--primary-black);
+    font-size: 0.875rem;
+}
+
+/* Market Button */
+.market-btn {
+    background-color: var(--primary-gold);
+    color: var(--primary-white);
+    border: none;
+    border-radius: 4px;
+    padding: 0.3rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* Info Section */
+.info-logo {
+    width: 120px;
+    height: auto;
+}
+
+.info-text {
+    font-size: 0.875rem;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+/* Medium Devices - 2 Column Layout */
+@media (max-width: 991px) {
+    .market-box,
+    .info-box {
+        margin-top: 1.5rem;
+        height: auto;
+    }
+
+    .markets-wrapper {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .market-title {
+        font-size: 1.1rem;
+    }
+
+    .market-table th,
+    .market-table td {
+        padding: 0.3rem;
+        font-size: 0.5rem;
+    }
+
+    .market-btn {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.6rem;
+    }
+
+    .info-logo {
+        width: 160px;
+    }
+
+    .info-text {
+        font-size: 1rem;
+    }
+}
+
+/* Small Devices */
+@media (max-width: 576px) {
+    .markets-wrapper {
+        flex-direction: column;
+    }
+
+    .market-table th,
+    .market-table td {
+        padding: 0.2rem;
+        font-size: 0.5rem;
+    }
+
+    .market-btn {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.5rem;
+    }
+
+    .info-logo {
+        width: 50px;
+    }
+
+    .info-text {
+        font-size: 0.75rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .market {
+        position: relative;
+        left: 50px;
+        top: -5px;
+        max-width: calc(100% - 50px);
+        overflow: hidden;
+    }
+}
+
+/* Dark Mode Styles */
+body.dark-mode header,
+body.dark-mode footer,
+body.dark-mode aside.sidebar {
+    background-color: #17181e !important;
+    color: white;
+}
+
+body.dark-mode aside.sidebar a.nav-link {
+    color: white;
+}
+
+body.dark-mode aside.sidebar a.nav-link.active {
+    background-color: #101014 !important;
+    color: white;
+}
+
+/* Dark mode: Override sidebar nav-link hover background */
+body.dark-mode aside.sidebar a.nav-link:hover {
+    background-color: #101014 !important; /* same as dark-mode bg */
+    color: white !important;
+}
+
+/* Override logout link and email text color in dark mode */
+body.dark-mode .logout-link,
+body.dark-mode .logout-link i,
+body.dark-mode .user-info p.text-muted {
+    color: white !important;
+}
+
+/* Adjust toggler icon sizing for both moon.png and sun.png */
+.toggle-icon,
+.hamburger-icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* Dark mode: Style close button in the sidebar */
+body.dark-mode .sidebar .close-btn {
+    color: white !important;
+}

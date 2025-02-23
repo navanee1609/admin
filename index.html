@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ZenxBots Dashboard - Manage your bots, subscriptions, and accounts efficiently.">
+    <title>ZenxBots Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="fixed-top bg-black text-white d-flex align-items-center">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-2">
+                <img src="/images/logo.png" alt="ZenxBots Logo" class="logo-img">
+                <span class="fw-bold fs-5">ZenxBots</span>
+            </div>
+            <nav class="d-flex align-items-center gap-4">
+                <button class="btn text-white p-0" id="theme-toggler" aria-label="Toggle Theme">
+                    <img src="./images/moon.png" alt="Toggle Theme" class="toggle-icon">
+                </button>
+                <button class="btn text-white p-0" id="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <img src="./images/menu.png" alt="Menu" class="hamburger-icon">
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sidebar Backdrop -->
+    <div class="sidebar-backdrop" role="presentation"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar bg-white" aria-labelledby="sidebar-title">
+        <div class="sidebar-header d-flex justify-content-around align-items-center p-3">
+            <div class="d-flex align-items-center gap-2">
+                <img src="/images/logo.png" alt="ZenxBots Logo" class="logo-img">
+                <span class="fw-bold fs-5" id="sidebar-title">ZenxBots</span>
+            </div>
+            <button class="btn p-0" id="sidebar-close" aria-label="Close Sidebar">
+                <i class="bi bi-x-lg" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="sidebar-content">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active d-flex align-items-center justify-content-between fw-medium" aria-current="page">
+                        Dashboard
+                        <img src="./images/arrow.png" alt="Arrow Icon" class="sidebar-icon">
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link fw-medium">Bots</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link fw-medium">Subscription</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link fw-medium">My Accounts</a>
+                </li>
+            </ul>
+        </div>
+        <div class="user-info p-3">
+            <div class="d-flex align-items-center justify-content-start gap-2">
+                <img src="./images/user.png" alt="User Profile" class="logo-img">
+                <p class="fw-bold mb-0 text-center">John Doe</p>
+            </div>
+            <p class="text-muted small text-start ms-2">john.doe@main.com</p>
+            <a href="#" class="logout-link d-flex align-items-center gap-2 text-dark text-decoration-none" aria-label="Logout">
+                <i class="bi bi-lock-fill" aria-hidden="true"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content-wrapper">
+        <div class="container py-4">
+            <div class="row">
+                <!-- First Section: Icons -->
+                <section class="col-md-6 d-flex flex-column align-items-center position-relative first-section">
+                    <div class="d-flex gap-3 flex-wrap justify-content-center w-100 icon-section">
+                        <!-- First Image -->
+                        <article class="d-flex flex-column align-items-center">
+                            <div class="icon-box">
+                                <div class="img-container">
+                                    <img src="./images/api.png" alt="Bind API">
+                                </div>
+                            </div>
+                            <p class="icon-text">Bind API</p>
+                        </article>
+                
+                        <!-- Second Image -->
+                        <article class="d-flex flex-column align-items-center">
+                            <div class="icon-box">
+                                <div class="img-container">
+                                    <img src="./images/registration.png" alt="Registration Account">
+                                </div>
+                            </div>
+                            <p class="icon-text">Registration Account</p>
+                        </article>
+                
+                        <!-- Third Image (Translated Y on Large Screens) -->
+                        <article class="d-flex flex-column align-items-center third-icon">
+                            <div class="icon-box">
+                                <div class="img-container">
+                                    <img src="./images/statement.png" alt="Statements">
+                                </div>
+                            </div>
+                            <p class="icon-text">Statements</p>
+                        </article>
+                    </div>
+                </section>
+                
+
+                <!-- Second Section: Logos -->
+                <section class="col-md-6 mb-4 second-section">
+                    <div class="p-3 bg-white shadow-sm rounded d-flex justify-content-between align-items-center gap-3">
+                        <!-- Left Column: Text Content -->
+                        <div class="balance-text" style="flex: 1; min-width: 150px;">
+                            <h2 class="fw fs-6 mb-1">Check Your Balance</h2>
+                            <p class="text-warning fs-7 mb-0">Choose Your Exchange</p>
+                        </div>
+
+                        <!-- Right Column: Exchange Logos in a Column -->
+                        <div class="exchange-logos position-relative" style="height: 150px; width: 100%">
+                            <!-- 1st Logo: Binance -->
+                            <img src="./images/binance.png" alt="Binance" class="exchange-logo" style="position: absolute; top: 0; left: 0; ">
+
+                            <!-- 2nd Logo: Bybit -->
+                            <img src="./images/bybit.png" alt="Bybit" class="exchange-logo" style="position: absolute; top: 25%; right: 0; ">
+
+                            <!-- 3rd Logo: Kucoin -->
+                            <img src="./images/kucoin.png" alt="Kucoin" class="exchange-logo" style="position: absolute; top: 50%; left: 15%; ">
+
+                            <!-- 4th Logo: MEXC Global -->
+                            <img src="./images/mexcGlobal.png" alt="Mexc Global" class="exchange-logo" style="position: absolute; top: 75%; left: 30%; ">
+                        </div>
+                    </div>
+                </section>
+                <section id="bot">
+                    <div class="container">
+                        <div class="row gy-4">
+                            <!-- First Column: Bots Details -->
+                            <article class="col-12 col-md-10 mx-auto col-lg-6">
+                                <div class="p-4 bg-white shadow-sm rounded">
+                                    <h3 class="mb-3 fw-bold">Bots Details</h3>
+                                    <div class="row">
+                                        <!-- Bot List -->
+                                        <div class="col-6">
+                                            <div class="d-flex flex-column gap-2">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <img src="./images/arrow-bullet.png" alt="Signal Bot Icon" class="bot-icon">
+                                                    <span class="bot-text fw-medium">Signal Bot</span>
+                                                </div>
+                                                <span class="ms-4 bot-text fw-medium">DCA Bot</span>
+                                                <span class="ms-4 bot-text fw-medium">Grid Bot</span>
+                                                <span class="ms-4 bot-text fw-medium">Copy Trading Bot</span>
+                                            </div>
+                                        </div>
+                                        <!-- Pie Chart Image -->
+                                        <div class="col-6 text-center d-flex flex-column justify-content-center align-items-center">
+                                            <img src="./images/pie-chart.png" alt="Pie Chart" class="img-fluid pie-chart-img" aria-label="Pie chart showing bot details">
+                                            <h2 class="pie-chart-title mt-2">Signal Bots</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                
+                            <!-- Second Column: Profit & Subscription -->
+                            <article class="col-md-12 col-lg-6">
+                                <div class="profit-section mt-4 mt-md-1">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <h4 class="profit-text">Today Profit</h4>
+                                            <p class="fs-5 fw-bold">0.000</p>
+                                        </div>
+                                        <div>
+                                            <h4 class="profit-text">Total Profit</h4>
+                                            <p class="fs-5 fw-bold">0.000</p>
+                                        </div>
+                                    </div>
+                                </div>
+                
+                                <!-- Subscription Plans -->
+                                <div class="p-4 bg-white shadow-sm rounded mt-2">
+                                    <div class="row">
+                                        <!-- Column 1: Subscription Heading -->
+                                        <div class="col-12 col-md-6 d-flex d-md-flex align-items-center text-start text-md-center">
+                                            <h3 class="fw-bold subscription-title">Subscription Plans</h3>
+                                        </div>
+                                        <!-- Column 2: Plan Details & Expiry -->
+                                        <div class="col-12 col-md-6 d-flex flex-column">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <p class="fs-6 mb-0 plan-text" style="font-weight: 600; color: black;">
+                                                    ( <span style="color: #636363;">Free Plan</span> - <span style="color: #E0AE4A;">Activated</span> )
+                                                </p>
+                                                <div class="arrow-icon d-flex justify-content-center align-items-center">
+                                                    <img src="./images/arrow-right.png" alt="Arrow Icon" class="arrow-img">
+                                                </div>
+                                            </div>
+                                            <p class="expired-text fw">Expires in 15 Days</p>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>  
+                </section>
+                
+<!-- Markets Section -->
+<section id="market" class="market mb-5" aria-labelledby="market-title">
+    <div class="container">
+        <div class="row d-flex align-items-stretch markets-wrapper"> 
+            <!-- Markets Section -->
+            <article class="col-12 col-md-6 col-lg-8 d-flex market-section"> 
+                <div class="p-3 bg-white rounded market-box w-100" aria-label="Market data">
+                    <h2 id="market-title" class="market-title">Markets</h2>
+                    <table class="market-table" aria-describedby="market-title">
+                        <thead>
+                            <tr>
+                                <th scope="col">Coins</th>
+                                <th scope="col">Current Price</th>
+                                <th scope="col">24h Change</th>
+                                <th scope="col">Action</th> 
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>BTC / BNB</td>
+                                <td>12.05466</td>
+                                <td>--%</td>
+                                <td><button class="market-btn" aria-label="View BTC/BNB details">Click Here</button></td>
+                            </tr>
+                            <tr>
+                                <td>BTC / BNB</td>
+                                <td>12.05466</td>
+                                <td>--%</td>
+                                <td><button class="market-btn" aria-label="View BTC/BNB details">Click Here</button></td>
+                            </tr>
+                            <tr>
+                                <td>BTC / BNB</td>
+                                <td>12.05466</td>
+                                <td>--%</td>
+                                <td><button class="market-btn" aria-label="View BTC/BNB details">Click Here</button></td>
+                            </tr>
+                            <tr>
+                                <td>BTC / BNB</td>
+                                <td>12.05466</td>
+                                <td>--%</td>
+                                <td><button class="market-btn" aria-label="View BTC/BNB details">Click Here</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <!-- Information Section -->
+            <article class="col-12 col-md-6 col-lg-4 d-flex info-section mb-4">
+                <div class="p-3 bg-white shadow-sm rounded info-box text-center w-100 h-100" aria-label="Additional Information">
+                    <img src="./images/info-img.png" alt="Information icon" class="info-logo mb-3 mt-4">
+                    <p class="info-text mt-3">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                    </p>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+            </div>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer class="fixed-bottom bg-black text-white d-flex align-items-center justify-content-center" role="contentinfo">
+        <p class="mb-0 small">Copyright © ZenxBots</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
