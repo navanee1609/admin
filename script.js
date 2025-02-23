@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Toggle theme
+    // Toggle theme with smooth transition
     themeToggler.addEventListener('click', function () {
         document.body.classList.toggle('dark-mode');
         const icon = themeToggler.querySelector('img');
@@ -43,4 +43,5 @@ document.addEventListener('DOMContentLoaded', function () {
             ? './images/sun.png'
             : './images/moon.png';
     });
+
 });
