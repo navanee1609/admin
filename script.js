@@ -13,10 +13,12 @@ document.addEventListener('DOMContentLoaded', function () {
         body.classList.toggle('sidebar-open');
     }
 
-    // Event listeners for sidebar toggle and close
-    sidebarToggle.addEventListener('click', toggleSidebar);
-    sidebarClose.addEventListener('click', toggleSidebar);
-    backdrop.addEventListener('click', toggleSidebar);
+    // Add event listeners only for small and medium devices
+    if (window.innerWidth < 992) {
+        sidebarToggle.addEventListener('click', toggleSidebar);
+        sidebarClose.addEventListener('click', toggleSidebar);
+        backdrop.addEventListener('click', toggleSidebar);
+    }
 
     // Close sidebar on window resize if screen becomes large
     window.addEventListener('resize', () => {
@@ -24,6 +26,11 @@ document.addEventListener('DOMContentLoaded', function () {
             sidebar.classList.remove('show');
             backdrop.classList.remove('show');
             body.classList.remove('sidebar-open');
+        } else {
+            // Re-add event listeners for small and medium devices
+            sidebarToggle.addEventListener('click', toggleSidebar);
+            sidebarClose.addEventListener('click', toggleSidebar);
+            backdrop.addEventListener('click', toggleSidebar);
         }
     });
 
